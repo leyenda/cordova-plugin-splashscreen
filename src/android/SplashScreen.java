@@ -328,7 +328,7 @@ public class SplashScreen extends CordovaPlugin {
                 }
 
                 // Status bar color just like cordova-plugin.statusbar
-                String statusBarColor = preferences.getString("StatusBarBackgroundColor", "#ffffff");
+                String statusBarColor = preferences.getString("StatusBarBackgroundColor", "#000000");
 
                 if (statusBarColor != null && !statusBarColor.isEmpty() && Build.VERSION.SDK_INT >= 19) {
                     splashWindow.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -338,7 +338,7 @@ public class SplashScreen extends CordovaPlugin {
                         splashWindow.getClass().getDeclaredMethod("setStatusBarColor", int.class).invoke(splashWindow, Color.parseColor(statusBarColor));
                     } catch (Exception ignore) {
                         // this should not happen, only in case Android removes this method in a version > 21
-                        LOG.w("SplashScreen StatusBarColor", "Method window.setStatusBarColor not found for SDK level "  Build.VERSION.SDK_INT);
+                        LOG.w("SplashScreen StatusBarColor", "Method window.setStatusBarColor not found for SDK level " +  Build.VERSION.SDK_INT);
                     }
                 }
 
